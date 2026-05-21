@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kailash School of Excellence — Multi-Photo Hero Banners</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f1117;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #f59e0b;
+    }
+    .page-header p {
+      color: #9ca3af;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+    .page-header code {
+      background: #1f2937;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: #d1d5db;
+    }
+
+    .banner-demo {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+    }
+    .banner-demo .demo-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+    .banner-demo .demo-desc {
+      color: #9ca3af;
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       BASE HERO MULTI-PHOTO STYLES
+    ============================================================ */
+    .mp-section {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 540px;
+      overflow: hidden;
+    }
+
+    /* Text content overlay */
+    .mp-content {
+      position: relative;
+      z-index: 3;
+      padding: 60px 50px;
+      max-width: 440px;
+    }
+
+    .mp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,158,11,0.15);
+      border: 1px solid rgba(245,158,11,0.4);
+      border-radius: 999px;
+      padding: 5px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #f59e0b;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .mp-headline {
+      font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .mp-headline .accent { color: #f59e0b; }
+    .mp-sub {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 24px;
+    }
+    .mp-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-p {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #f59e0b;
+      color: #0f1117;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 11px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-p:hover { background: #fbbf24; transform: translateY(-1px); }
+    .btn-o {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 10px 22px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-o:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+    /* Photo collage grid */
+    .mp-photos {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 62%;
+      display: grid;
+      gap: 5px;
+      padding: 5px;
+      background: rgba(0,0,0,0.3);
+    }
+    .mp-photos img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    /* Bottom gradient on photo area */
+    .mp-photos::after {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 0;
+      height: 100%;
+      width: 80px;
+      background: linear-gradient(to left, rgba(15,17,23,0.9) 0%, transparent 100%);
+    }
+
+    /* ============================================================
+       BANNER M1 — Homepage Hero
+       Grid: large main + 4 small in 2×3 layout
+    ============================================================ */
+    .mp-m1 .mp-photos {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    .mp-m1 .mp-photos .main-img {
+      grid-column: 1;
+      grid-row: 1 / 3;
+    }
+    .mp-m1 .mp-photos .s1 { grid-column: 2; grid-row: 1; }
+    .mp-m1 .mp-photos .s2 { grid-column: 3; grid-row: 1; }
+    .mp-m1 .mp-photos .s3 { grid-column: 2; grid-row: 2; }
+    .mp-m1 .mp-photos .s4 { grid-column: 3; grid-row: 2; }
+
+    /* ============================================================
+       BANNER M2 — About Page
+       Right side: 2 rows, 3 cols with offset/staggered look
+    ============================================================ */
+    .mp-m2 {
+      min-height: 500px;
+    }
+    .mp-m2 .mp-photos {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      width: 55%;
+    }
+    .mp-m2 .mp-photos img:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+    .mp-m2 .mp-photos img:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .mp-m2 .mp-photos img:nth-child(3) { grid-column: 2; grid-row: 2; }
+    .mp-m2 .mp-photos img:nth-child(4) { grid-column: 1; grid-row: 3; }
+    .mp-m2 .mp-photos img:nth-child(5) { grid-column: 2; grid-row: 3; }
+
+    /* ============================================================
+       BANNER M3 — Gallery Hero
+       Left text + right photo strip (5 tall photos in a row)
+    ============================================================ */
+    .mp-m3 {
+      min-height: 480px;
+      flex-direction: row-reverse;
+    }
+    .mp-m3 .mp-content {
+      max-width: 420px;
+    }
+    .mp-m3 .mp-photos {
+      left: 0;
+      right: auto;
+      width: 58%;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 1fr;
+      gap: 4px;
+    }
+    .mp-m3 .mp-photos::after {
+      left: auto;
+      right: -40px;
+      width: 80px;
+      background: linear-gradient(to right, rgba(15,17,23,0.9) 0%, transparent 100%);
+    }
+    .mp-m3 .mp-photos img {
+      height: 100%;
+    }
+
+    /* ============================================================
+       BANNER M4 — Achievements
+       Dark gradient left, right side = 2×2 grid of 4 photos
+    ============================================================ */
+    .mp-m4 {
+      min-height: 500px;
+      background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 60%, #111827 100%);
+    }
+    .mp-m4 .mp-photos {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      inset: auto;
+      background: none;
+      padding: 0;
+    }
+    .mp-m4 .mp-photos::after { display: none; }
+    .mp-m4 .mp-photos img {
+      position: absolute;
+    }
+    .mp-m4 .mp-photos img:nth-child(1) {
+      left: 0; top: 0; width: 40%; height: 100%;
+    }
+    .mp-m4 .mp-photos img:nth-child(2) {
+      left: 40%; top: 0; width: 35%; height: 55%;
+    }
+    .mp-m4 .mp-photos img:nth-child(3) {
+      right: 0; top: 0; width: 25%; height: 55%;
+    }
+    .mp-m4 .mp-photos img:nth-child(4) {
+      left: 40%; bottom: 0; width: 60%; height: 45%;
+    }
+    .mp-m4 .mp-content {
+      position: relative;
+      z-index: 5;
+      background: linear-gradient(to right, rgba(15,17,23,0.95) 0%, rgba(15,17,23,0.7) 50%, transparent 100%);
+    }
+
+    /* ============================================================
+       BANNER M5 — Principal / Message
+       Full-width 3-photo cinematic strip + text overlay at bottom
+    ============================================================ */
+    .mp-m5 {
+      flex-direction: column;
+      min-height: 520px;
+    }
+    .mp-m5 .mp-photos {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 4px;
+      padding: 0;
+      background: none;
+    }
+    .mp-m5 .mp-photos::after {
+      display: none;
+    }
+    .mp-m5 .mp-photos img {
+      height: 100%;
+      width: 100%;
+    }
+    /* Dark overlay over all photos */
+    .mp-m5::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,20,0.3) 0%,
+        rgba(10,10,20,0.55) 40%,
+        rgba(10,10,20,0.88) 100%
+      );
+      z-index: 2;
+    }
+    .mp-m5 .mp-content {
+      position: relative;
+      z-index: 5;
+      padding: 60px 60px 60px;
+      max-width: 100%;
+      text-align: center;
+      align-self: flex-end;
+    }
+    .mp-m5 .mp-actions { justify-content: center; }
+
+    /* ============================================================
+       BANNER M6 — Admissions (text + 4-photo mini-grid)
+       Pure gradient, no big photo — 4 compact photos bottom right
+    ============================================================ */
+    .mp-m6 {
+      min-height: 460px;
+      background: linear-gradient(160deg, #111827 0%, #1a1f2e 50%, #0f1117 100%);
+    }
+    .mp-m6 .mp-content {
+      max-width: 500px;
+    }
+    .mp-m6 .mp-photos {
+      position: relative;
+      inset: auto;
+      width: 38%;
+      height: 220px;
+      align-self: flex-end;
+      margin: 0 30px 30px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      padding: 3px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .mp-m6 .mp-photos::after { display: none; }
+    .mp-m6 .mp-photos img {
+      border-radius: 3px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: #1f2937;
+      border-left: 3px solid #f59e0b;
+      color: #9ca3af;
+      font-size: 0.78rem;
+      padding: 6px 14px;
+      margin-bottom: 14px;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Kailash School of Excellence</h1>
+  <p>Multi-Photo Hero Banners &mdash; 6 banners, each with 3&ndash;5 photos combined</p>
+  <p>Copy each <code>&lt;section&gt;</code> block into your HTML page. Replace image paths.</p>
+</div>
+
+
+<!-- ================================================================
+  BANNER M1 — Homepage Hero  (5-photo grid: 1 large + 4 small)
+  Best for: index.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner M1 &mdash; Homepage (5 photos: 1+4 grid)</div>
+  <div class="demo-desc">
+    Left: school name &amp; tagline &amp; CTA. Right: 5-photo mosaic grid
+    (1 tall left + 4 small right in 2×2). Works great for homepage.
+  </div>
+  <section class="mp-section mp-m1">
+    <div class="mp-photos">
+      <!-- Main tall photo -->
+      <img class="main-img" src="kailash_images/10th_12th_poojai_IMG20260128094105.jpg" alt="School event" />
+      <img class="s1" src="kailash_images/grade_6_talent_IMG20260305181345.jpg" alt="Talent show" />
+      <img class="s2" src="kailash_images/kg_graduation_IMG20260313183313.jpg" alt="KG Graduation" />
+      <img class="s3" src="kailash_images/grade_6_talent_IMG20260305181411.jpg" alt="Talent show" />
+      <img class="s4" src="kailash_images/kg_graduation_IMG20260313183329.jpg" alt="Graduation" />
+    </div>
+    <div class="mp-content">
+      <div class="mp-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/></svg>
+        CBSE Affiliated &bull; Namakkal
+      </div>
+      <h1 class="mp-headline">
+        Where Every Child<br/>
+        <span class="accent">Shines Bright</span>
+      </h1>
+      <p class="mp-sub">
+        Kailash School of Excellence &mdash; 25+ years of nurturing confident,
+        capable learners. Our motto: <strong>YES I CAN</strong>.
+      </p>
+      <div class="mp-actions">
+        <a href="#" class="btn-p">Explore Our School</a>
+        <a href="#" class="btn-o">View Gallery</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER M2 — About Page  (5 photos in asymmetric 2-column mosaic)
+  Best for: about.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner M2 &mdash; About (5 photos: asymmetric 2-col grid)</div>
+  <div class="demo-desc">
+    Left: text overlay. Right: tall left photo + 4 stacked right photos
+    in a staggered mosaic. Great for "Our Story" section.
+  </div>
+  <section class="mp-section mp-m2">
+    <div class="mp-photos">
+      <img src="kailash_images/kg_graduation_IMG20260313183313.jpg" alt="KG Graduation" />
+      <img src="kailash_images/grade_6_talent_IMG20260305181345.jpg" alt="Talent show" />
+      <img src="kailash_images/grade_6_talent_IMG20260305181411.jpg" alt="Talent" />
+      <img src="kailash_images/10th_12th_poojai_IMG20260128094105.jpg" alt="Poojai" />
+      <img src="kailash_images/kg_graduation_IMG20260313183329.jpg" alt="Graduation" />
+    </div>
+    <div class="mp-content">
+      <div class="mp-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84z"/></svg>
+        Our Story &bull; Est. 2000
+      </div>
+      <h1 class="mp-headline">
+        Rooted in Vision,<br/>
+        <span class="accent">Growing in Excellence</span>
+      </h1>
+      <p class="mp-sub">
+        Formerly Dr. M.S. Udayamurthy School, Kailash School of Excellence
+        has been shaping young minds in Namakkal for over two decades with
+        values, discipline, and academic excellence.
+      </p>
+      <div class="mp-actions">
+        <a href="#" class="btn-p">Read Our History</a>
+        <a href="#" class="btn-o">Our Philosophy</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER M3 — Gallery Hero  (5 photos in a horizontal filmstrip)
+  Best for: gallery.html or events.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner M3 &mdash; Gallery (5 photos: horizontal filmstrip)</div>
+  <div class="demo-desc">
+    Left: text. Right: 5 tall photos in a horizontal filmstrip layout —
+    like looking at a wall of framed photos. Perfect for event showcases.
+  </div>
+  <section class="mp-section mp-m3">
+    <div class="mp-photos">
+      <img src="kailash_images/10th_12th_poojai_IMG20260128094105.jpg" alt="Poojai ceremony" />
+      <img src="kailash_images/10th_12th_poojai_IMG20260128094122.jpg" alt="Poojai celebration" />
+      <img src="kailash_images/grade_6_talent_IMG20260305181345.jpg" alt="Talent show" />
+      <img src="kailash_images/kg_graduation_IMG20260313183313.jpg" alt="KG Graduation" />
+      <img src="kailash_images/kg_graduation_IMG20260313183345.jpg" alt="Graduation ceremony" />
+    </div>
+    <div class="mp-content">
+      <div class="mp-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16V4c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2v1l-2 2v2h2v8h-2v-1l-2 2v1c2.21 0 4-1.79 4-4z"/></svg>
+        Photo Gallery
+      </div>
+      <h1 class="mp-headline">
+        Every Memory<br/>
+        <span class="accent">Tells a Story</span>
+      </h1>
+      <p class="mp-sub">
+        From grand Poojai ceremonies to joyful KG Graduations and spectacular
+        talent shows &mdash; explore the vibrant life at Kailash School.
+      </p>
+      <div class="mp-actions">
+        <a href="#" class="btn-p">Browse All Photos</a>
+        <a href="#" class="btn-o">Past Events</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER M4 — Achievements & Milestones  (4 photos in artistic layout)
+  Best for: index.html or a dedicated achievements.html page
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner M4 &mdash; Achievements (4 photos: full-bleed artistic)</div>
+  <div class="demo-desc">
+    Full-bleed dark background. Left text + right side: 4 photos in an
+    artistic asymmetric layout (1 tall left strip + 3 right blocks).
+    Great for highlighting school achievements.
+  </div>
+  <section class="mp-section mp-m4">
+    <div class="mp-photos">
+      <img src="kailash_images/10th_12th_poojai_IMG20260128094105.jpg" alt="School event" />
+      <img src="kailash_images/grade_6_talent_IMG20260305181345.jpg" alt="Talent" />
+      <img src="kailash_images/grade_6_talent_IMG20260305181411.jpg" alt="Performance" />
+      <img src="kailash_images/kg_graduation_IMG20260313183313.jpg" alt="Graduation" />
+    </div>
+    <div class="mp-content">
+      <div class="mp-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg>
+        Our Achievements
+      </div>
+      <h1 class="mp-headline">
+        Celebrating<br/>
+        <span class="accent">Every Milestone</span>
+      </h1>
+      <p class="mp-sub">
+        Academic excellence, sports achievements, cultural victories &mdash;
+        at Kailash School, every accomplishment is a reason to celebrate.
+      </p>
+      <div class="mp-actions">
+        <a href="#" class="btn-p">Our Achievements</a>
+        <a href="#" class="btn-o">Sports Highlights</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER M5 — Principal's Message  (3 full-width photos with overlay)
+  Best for: principal.html or welcome.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner M5 &mdash; Principal's Message (3 photos: cinematic full-width)</div>
+  <div class="demo-desc">
+    3 wide photos fill the entire background. Dark gradient overlay + text
+    centered at the bottom. Cinematic, editorial feel. Perfect for a
+    Principal's welcome message or school mission page.
+  </div>
+  <section class="mp-section mp-m5">
+    <div class="mp-photos">
+      <img src="kailash_images/kg_graduation_IMG20260313183313.jpg" alt="School life" />
+      <img src="kailash_images/10th_12th_poojai_IMG20260128094105.jpg" alt="School assembly" />
+      <img src="kailash_images/grade_6_talent_IMG20260305181345.jpg" alt="Talent show" />
+    </div>
+    <div class="mp-content">
+      <div class="mp-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Principal's Welcome
+      </div>
+      <h1 class="mp-headline">
+        A Warm Welcome from<br/>
+        <span class="accent">Kailash School</span>
+      </h1>
+      <p class="mp-sub">
+        "Every child who walks through our doors carries a spark of greatness.
+        Our role is to fan that flame. <strong>YES I CAN</strong> is not just
+        our motto &mdash; it is our promise to every student."
+      </p>
+      <div class="mp-actions">
+        <a href="#" class="btn-p">Read Principal's Message</a>
+        <a href="#" class="btn-o">Meet Our Faculty</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER M6 — Admissions  (gradient + 4-photo mini-grid corner)
+  Best for: admissions.html or contact.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner M6 &mdash; Admissions (gradient + 4-photo mini-grid)</div>
+  <div class="demo-desc">
+    No large background photo — just a rich dark gradient. Instead, a
+    compact 2×2 photo grid sits in the bottom-right corner. Clean,
+    focused, action-driven.
+  </div>
+  <section class="mp-section mp-m6">
+    <div class="mp-content">
+      <div class="mp-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Admissions Open 2026-27
+      </div>
+      <h1 class="mp-headline">
+        Give Your Child the<br/>
+        <span class="accent">Gift of Excellence</span>
+      </h1>
+      <p class="mp-sub">
+        Join the Kailash School family. CBSE-affiliated, value-based
+        education from Nursery to Grade 12. Admissions now open.
+      </p>
+      <div class="mp-actions">
+        <a href="#" class="btn-p">Apply for Admission</a>
+        <a href="#" class="btn-o">Contact Us</a>
+      </div>
+    </div>
+    <div class="mp-photos">
+      <img src="kailash_images/10th_12th_poojai_IMG20260128094105.jpg" alt="School" />
+      <img src="kailash_images/grade_6_talent_IMG20260305181345.jpg" alt="Students" />
+      <img src="kailash_images/kg_graduation_IMG20260313183313.jpg" alt="Celebration" />
+      <img src="kailash_images/10th_12th_poojai_IMG20260128094122.jpg" alt="Event" />
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

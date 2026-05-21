@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"C:/Users/sumit/.claude/image-cache/f5414655-8590-42bc-a947-85bc9dc2afc8/2.png\" \"C:/Users/sumit/Desktop/play_console/hero-banner-1.png\")",
+      "Bash(cp \"C:/Users/sumit/.claude/image-cache/f5414655-8590-42bc-a947-85bc9dc2afc8/3.png\" \"C:/Users/sumit/Desktop/play_console/hero-banner-2.png\")",
+      "Bash(cp \"C:/Users/sumit/.claude/image-cache/f5414655-8590-42bc-a947-85bc9dc2afc8/4.png\" \"C:/Users/sumit/Desktop/play_console/hero-banner-3.png\")",
+      "Bash(python3 -c ' *)",
+      "Bash(cp \"C:/Users/sumit/.claude/image-cache/ab28912e-822b-46e6-adcb-f568d27ea5e2/20.png\" \"C:/Users/sumit/Desktop/play_console/kailash_images/whatsapp-icon.png\")",
+      "Bash(python3 -c \"from PIL import Image; img = Image.open\\(r'C:\\\\Users\\\\sumit\\\\Desktop\\\\play_console\\\\kailash_images\\\\whatsapp-icon.png'\\); print\\(f'Size: {img.size}'\\)\")",
+      "Bash(cp \"C:/Users/sumit/.claude/image-cache/ab28912e-822b-46e6-adcb-f568d27ea5e2/21.png\" \"C:/Users/sumit/Desktop/play_console/kailash_images/whatsapp-icon.png\")"
+    ]
+  }
+}

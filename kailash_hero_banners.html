@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kailash School of Excellence — Hero Banners</title>
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f1117;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #f59e0b;
+      letter-spacing: 0.05em;
+    }
+    .page-header p {
+      color: #9ca3af;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+    .page-header code {
+      background: #1f2937;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: #d1d5db;
+    }
+
+    /* ============================================================
+       BANNER WRAPPER (used for demo preview)
+    ============================================================ */
+    .banner-demo {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+    }
+    .banner-demo .demo-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+    .banner-demo .demo-desc {
+      color: #9ca3af;
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       REUSABLE HERO SECTION
+       Usage: copy the <section class="hero-NAME"> block into your site.
+       Replace src="..." with your actual image paths.
+       If no image, remove bg-image div (gradient-only version activates).
+    ============================================================ */
+
+    /* ---- Image overlay gradient ---- */
+    .hero-section .bg-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,20,0.35) 0%,
+        rgba(10,10,20,0.55) 50%,
+        rgba(10,10,20,0.85) 100%
+      );
+    }
+
+    /* ---- Shared content card ---- */
+    .hero-section .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    /* ---- Shared typography ---- */
+    .hero-section .school-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,158,11,0.15);
+      border: 1px solid rgba(245,158,11,0.4);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #f59e0b;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hero-section .hero-headline {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .hero-section .hero-headline .accent {
+      color: #f59e0b;
+    }
+    .hero-section .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      line-height: 1.65;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 28px;
+      max-width: 560px;
+    }
+    .hero-section .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ---- Buttons ---- */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #f59e0b;
+      color: #0f1117;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #fbbf24; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 26px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ---- Quick stats bar ---- */
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      flex-wrap: wrap;
+    }
+    .hero-stats .stat-item {}
+    .hero-stats .stat-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #f59e0b;
+      line-height: 1;
+    }
+    .hero-stats .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================================
+       BANNER 1 — HOMEPAGE HERO
+       Best for: the top of every page (index.html)
+       Image tip: use a wide campus/aerial or assembly photo (1920×800 min)
+    ============================================================ */
+    .hero-home {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      overflow: hidden;
+    }
+    .hero-home .bg-image {
+      position: absolute;
+      inset: 0;
+      background:
+        url('kailash_images/10th_12th_poojai_IMG20260128094105.jpg')
+        center/cover no-repeat;
+    }
+
+    /* ============================================================
+       BANNER 2 — ABOUT SCHOOL HERO
+       Best for: about.html
+       Image tip: school building, classroom, or cultural event wide shot
+    ============================================================ */
+    .hero-about {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      overflow: hidden;
+    }
+    .hero-about .bg-image {
+      position: absolute;
+      inset: 0;
+      background:
+        url('kailash_images/kg_graduation_IMG20260313183313.jpg')
+        center/cover no-repeat;
+    }
+    .hero-about .hero-content {
+      max-width: 720px;
+    }
+
+    /* ============================================================ */
+    /* BANNER 3 — GALLERY / EVENTS HERO                          */
+    /* Best for: gallery.html or events.html                      */
+    /* Image tip: talent show or poojai event crowd shot         */
+    /* ============================================================ */
+    .hero-gallery {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      overflow: hidden;
+    }
+    .hero-gallery .bg-image {
+      position: absolute;
+      inset: 0;
+      background:
+        url('kailash_images/grade_6_talent_IMG20260305181345.jpg')
+        center/cover no-repeat;
+    }
+    /* Slightly different overlay for gallery — more dramatic */
+    .hero-gallery .bg-image::after {
+      background: linear-gradient(
+        105deg,
+        rgba(10,10,20,0.88) 0%,
+        rgba(10,10,20,0.65) 45%,
+        rgba(10,10,20,0.3) 100%
+      );
+    }
+
+    /* ============================================================
+       BANNER 4 — CONTACT / ADMISSIONS HERO  (gradient only)
+       Best for: contact.html or admissions.html
+       Fully gradient — no background image needed
+    ============================================================ */
+    .hero-contact {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 50%, #0f1117 100%);
+      overflow: hidden;
+    }
+    /* Decorative shape */
+    .hero-contact::before {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-contact .hero-headline {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+    }
+
+    /* ============================================================
+       BANNER 5 — PRINCIPAL'S MESSAGE HERO  (gradient + photo side)
+       Best for: a dedicated principal.html page
+    ============================================================ */
+    .hero-principal {
+      position: relative;
+      min-height: 460px;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      background: linear-gradient(160deg, #111827 0%, #1a1f2e 60%, #111827 100%);
+      overflow: hidden;
+    }
+    .hero-principal::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 40%;
+      height: 100%;
+      background: url('kailash_images/logo2.jpeg') center/contain no-repeat;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       SECTION LABELS (demo only)
+    ============================================================ */
+    .section-tag {
+      display: inline-block;
+      background: #1f2937;
+      border-left: 3px solid #f59e0b;
+      color: #9ca3af;
+      font-size: 0.78rem;
+      padding: 6px 14px;
+      margin-bottom: 14px;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     PAGE INTRO (delete this header in your real site)
+================================================================ -->
+<div class="page-header">
+  <h1>Kailash School of Excellence</h1>
+  <p>Hero Banner Library &mdash; 5 banners ready to use</p>
+  <p>
+    Each banner is a self-contained <code>&lt;section&gt;</code> block.<br/>
+    Copy the one you need into your HTML page. Replace image paths.
+  </p>
+</div>
+
+
+<!-- ================================================================
+  BANNER 1 — HOMEPAGE HERO
+  Use on: index.html (main landing page)
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner 1 of 5 &mdash; Homepage</div>
+  <div class="demo-desc">
+    Full-width hero for the homepage. Wide campus or assembly photo works best.
+    Replace <code>url('...')</code> with your actual image path.
+  </div>
+  <section class="hero-section hero-home">
+    <div class="bg-image"></div>
+    <div class="hero-content">
+      <div class="school-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+        CBSE Affiliated &bull; Namakkal
+      </div>
+      <h1 class="hero-headline">
+        Nurturing Minds,<br/>
+        Building <span class="accent">Futures</span>
+      </h1>
+      <p class="hero-sub">
+        Kailash School of Excellence &mdash; where every child is empowered with
+        confidence, values, and the courage to say <strong>YES I CAN</strong>.
+        Established 2000, Namakkal.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          Watch Introduction
+        </a>
+        <a href="#" class="btn-outline">Explore Admissions</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">25+</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">CBSE</div>
+          <div class="stat-label">Affiliated School</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Holistic Development</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER 2 — ABOUT SCHOOL HERO
+  Use on: about.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner 2 of 5 &mdash; About Page</div>
+  <div class="demo-desc">
+    Showcases the school's history, philosophy, and identity.
+    Works well with a wide cultural event or school building photo.
+  </div>
+  <section class="hero-section hero-about">
+    <div class="bg-image"></div>
+    <div class="hero-content">
+      <div class="school-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-2H3v2zm0-4h8v-2H3v2z"/></svg>
+        About Our School
+      </div>
+      <h1 class="hero-headline">
+        About <span class="accent">Kailash School</span><br/>
+        of Excellence
+      </h1>
+      <p class="hero-sub">
+        A premier CBSE Senior Secondary institution established in 2000, inspired by the
+        visionary ideals of Dr. M.S. Udayamurthy. We believe education must nurture the
+        intellectual, emotional, physical, and moral dimensions of every child.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Our History</a>
+        <a href="#" class="btn-outline">Our Philosophy</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER 3 — GALLERY / EVENTS HERO
+  Use on: gallery.html or events.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner 3 of 5 &mdash; Gallery / Events</div>
+  <div class="demo-desc">
+    Asymmetric layout for visual impact. Great for showcasing school events,
+    talent shows, poojai ceremonies, and graduation.
+  </div>
+  <section class="hero-section hero-gallery">
+    <div class="bg-image"></div>
+    <div class="hero-content">
+      <div class="school-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        School Events &amp; Celebrations
+      </div>
+      <h1 class="hero-headline">
+        Every Moment<br/>
+        <span class="accent">Celebrated</span>
+      </h1>
+      <p class="hero-sub">
+        From grand Poojai ceremonies to KG Graduation and inter-school talent shows,
+        life at Kailash School is filled with joy, achievement, and unforgettable memories.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">View Photo Gallery</a>
+        <a href="#" class="btn-outline">Past Events</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER 4 — ADMISSIONS / CONTACT HERO  (gradient, no image)
+  Use on: admissions.html or contact.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner 4 of 5 &mdash; Admissions / Contact</div>
+  <div class="demo-desc">
+    Clean gradient-only banner &mdash; no image required. Perfect for action-oriented
+    pages like admissions, contact, or enquiry forms.
+  </div>
+  <section class="hero-section hero-contact">
+    <div class="hero-content">
+      <div class="school-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Admissions Open
+      </div>
+      <h1 class="hero-headline">
+        Begin Your Child's<br/>
+        <span class="accent">Journey of Excellence</span>
+      </h1>
+      <p class="hero-sub">
+        Admissions are now open for the academic year. Give your child the gift of
+        CBSE education rooted in values, confidence, and holistic growth.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Apply Now</a>
+        <a href="#" class="btn-outline">Contact Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">Nursery–12</div>
+          <div class="stat-label">Classes Available</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2026-27</div>
+          <div class="stat-label">Admissions Open</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ================================================================
+  BANNER 5 — PRINCIPAL'S MESSAGE HERO  (gradient + logo watermark)
+  Use on: principal.html or message.html
+================================================================ -->
+<div class="banner-demo">
+  <div class="demo-label">Banner 5 of 5 &mdash; Principal's Message</div>
+  <div class="demo-desc">
+    Elegant gradient banner with logo watermark on the right.
+    Ideal for a page featuring the Principal's welcome message.
+  </div>
+  <section class="hero-section hero-principal">
+    <div class="hero-content">
+      <div class="school-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Principal's Welcome
+      </div>
+      <h1 class="hero-headline">
+        A Message from<br/>
+        <span class="accent">Our Principal</span>
+      </h1>
+      <p class="hero-sub">
+        "At Kailash School of Excellence, we are committed to creating an environment
+        where every child feels valued, challenged, and inspired. Our motto
+        <strong>YES I CAN</strong> is not just words &mdash; it is the foundation
+        of everything we do."
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Read Full Message</a>
+        <a href="#" class="btn-outline">Meet Our Faculty</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
