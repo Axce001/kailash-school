@@ -1566,8 +1566,34 @@
       fill: white;
     }
     @media (max-width: 768px) {
-      .announcement-text { display: none; }
-      .top-bar-left span:not(:first-child) { display: none; }
+      .top-bar {
+        padding: 4px 0;
+        height: auto;
+        min-height: 36px;
+      }
+      .top-bar .container {
+        flex-direction: column;
+        gap: 4px;
+        padding: 0 10px !important;
+      }
+      .top-bar-left {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+      }
+      .top-bar-left span {
+        font-size: 11px;
+      }
+      .announcement-text {
+        display: none;
+      }
+      .top-bar-right {
+        flex-direction: row;
+        gap: 12px;
+      }
+      .top-bar-social {
+        gap: 10px;
+      }
     }
     .top-bar.hidden {
       display: none;
@@ -4166,6 +4192,30 @@
   }
   .ec-activity-card {
     padding: 20px !important;
+  }
+  /* Top bar mobile */
+  .top-bar {
+    padding: 6px 0 !important;
+    height: auto !important;
+  }
+  .top-bar .container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+  .top-bar-left {
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+  .top-bar-left span {
+    font-size: 10px !important;
+  }
+  .announcement-text {
+    display: none !important;
+  }
+  .top-bar-right {
+    flex-direction: row !important;
+    gap: 12px !important;
   }
 }
 
