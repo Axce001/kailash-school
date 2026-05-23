@@ -3117,6 +3117,42 @@
     }
     .gallery-scroll::-webkit-scrollbar { display: none; }
 
+    /* Carousel navigation arrows */
+    .carousel-nav {
+      display: none;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .carousel-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .carousel-nav-btn:hover {
+      background: var(--accent-h);
+      transform: scale(1.1);
+    }
+    .carousel-nav-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-nav {
+        display: flex;
+      }
+    }
+
     .gallery-card {
       flex-shrink: 0;
       width: 260px;
@@ -4495,6 +4531,15 @@
       </div>
     </div>
     </div>
+    <!-- Carousel Navigation Arrows -->
+    <div class="carousel-nav" id="programsCarouselNav">
+      <button class="carousel-nav-btn prev" onclick="scrollCarousel('programs', -1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="carousel-nav-btn next" onclick="scrollCarousel('programs', 1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -4600,6 +4645,15 @@
         <h3>Experiential Learning</h3>
         <p>Physics, Chemistry, Biology, and Computer labs where students apply textbook concepts in real experiments.</p>
       </div>
+    </div>
+    <!-- Carousel Navigation Arrows -->
+    <div class="carousel-nav" id="wtCarouselNav">
+      <button class="carousel-nav-btn prev" onclick="scrollCarousel('wt', -1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="carousel-nav-btn next" onclick="scrollCarousel('wt', 1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -4726,6 +4780,15 @@
           <p>Festive moments that create lifelong memories</p>
         </div>
       </div>
+    </div>
+    <!-- Carousel Navigation Arrows -->
+    <div class="carousel-nav" id="galleryCarouselNav">
+      <button class="carousel-nav-btn prev" onclick="scrollCarousel('gallery', -1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="carousel-nav-btn next" onclick="scrollCarousel('gallery', 1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -5249,6 +5312,27 @@
   }, { threshold: 0.5 });
 
   titles.forEach(el => titleObserver.observe(el));
+
+  // Carousel scroll function for mobile navigation arrows
+  function scrollCarousel(type, direction) {
+    const scrollAmount = 300;
+    let target;
+
+    if (type === 'gallery') {
+      target = document.querySelector('.gallery-scroll');
+    } else if (type === 'wt') {
+      target = document.querySelector('.wt-cards-grid');
+    } else if (type === 'programs') {
+      target = document.querySelector('.programs-grid');
+    }
+
+    if (target) {
+      target.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  }
 
   // About section photo carousel — 3s auto rotation
   function initAboutCarousel() {
