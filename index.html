@@ -1936,11 +1936,38 @@
       grid-template-columns: 1fr;
       gap: 20px;
     }
+    .programs-grid-wrapper {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      margin: 0 -16px;
+      padding: 0 16px;
+    }
+    .programs-grid-wrapper::-webkit-scrollbar {
+      display: none;
+    }
     @media (min-width: 600px) {
       .programs-grid { grid-template-columns: repeat(2, 1fr); }
+      .programs-grid-wrapper { margin: 0 -20px; padding: 0 20px; }
     }
     @media (min-width: 900px) {
       .programs-grid { grid-template-columns: repeat(4, 1fr); }
+      .programs-grid-wrapper { overflow-x: visible; scroll-snap-type: none; margin: 0; padding: 0; }
+    }
+    @media (max-width: 768px) {
+      .programs-grid {
+        display: flex;
+        gap: 16px;
+        width: max-content;
+      }
+      .program-card {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        min-width: 280px;
+        max-width: 85vw;
+      }
     }
 
     .program-card {
@@ -2200,7 +2227,7 @@
        EXTRACURRICULAR ACTIVITIES
     ============================================================ */
     .extra-curricular {
-      padding: 60px 0;
+      padding: 60px 0 20px 0;
       border-top: 1px solid var(--border);
     }
     .ec-header {
@@ -2419,7 +2446,7 @@
        AWARDS & ACHIEVEMENTS
     ============================================================ */
     .awards-section {
-      padding: 60px 0;
+      padding: 60px 0 20px 0;
       border-top: 1px solid var(--border);
       background: var(--bg-surface);
     }
@@ -2727,52 +2754,11 @@
 ================================================================ */
     .about-us {
       position: relative;
-      padding: 30px 0 60px 0;
+      padding: 10px 0 60px 0;
       overflow: hidden;
       background: linear-gradient(160deg, #fffcf8 0%, #f8f7f4 50%, #fff8f0 100%);
     }
-    /* Meteors Animation */
-    .meteors-bg {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .meteor {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      background: #64748b;
-      border-radius: 9999px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
-    }
-    .meteor::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 50px;
-      height: 1px;
-      background: linear-gradient(to right, #64748b, transparent);
-    }
-    .meteor:nth-child(1) { top: 10%; left: -50px; animation: meteor 8s ease-in infinite; animation-delay: 0.2s; transform: rotate(215deg); }
-    .meteor:nth-child(2) { top: 20%; left: -30px; animation: meteor 12s ease-in infinite; animation-delay: 0.5s; transform: rotate(210deg); }
-    .meteor:nth-child(3) { top: 35%; left: -60px; animation: meteor 10s ease-in infinite; animation-delay: 0.8s; transform: rotate(220deg); }
-    .meteor:nth-child(4) { top: 50%; left: -40px; animation: meteor 9s ease-in infinite; animation-delay: 1.1s; transform: rotate(215deg); }
-    .meteor:nth-child(5) { top: 65%; left: -55px; animation: meteor 11s ease-in infinite; animation-delay: 0.3s; transform: rotate(218deg); }
-    .meteor:nth-child(6) { top: 80%; left: -35px; animation: meteor 7s ease-in infinite; animation-delay: 0.7s; transform: rotate(212deg); }
-    .meteor:nth-child(7) { top: 15%; left: -45px; animation: meteor 14s ease-in infinite; animation-delay: 1.4s; transform: rotate(217deg); }
-    .meteor:nth-child(8) { top: 45%; left: -50px; animation: meteor 13s ease-in infinite; animation-delay: 0.9s; transform: rotate(215deg); }
-    .meteor:nth-child(9) { top: 70%; left: -60px; animation: meteor 8s ease-in infinite; animation-delay: 1.6s; transform: rotate(220deg); }
-    .meteor:nth-child(10) { top: 25%; left: -40px; animation: meteor 10s ease-in infinite; animation-delay: 0.4s; transform: rotate(213deg); }
-    @keyframes meteor {
-      0% { transform: translateX(0) translateY(0) rotate(215deg); opacity: 0; }
-      10% { opacity: 1; }
-      70% { opacity: 1; }
-      100% { transform: translateX(calc(100vw + 100px)) translateY(100px) rotate(215deg); opacity: 0; }
-    }
-    .about-us > *:not(.meteors-bg) {
+    .about-us > * {
       position: relative;
       z-index: 1;
     }
@@ -3609,8 +3595,18 @@
     height: 280px !important;
   }
   .programs-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
+    display: flex !important;
+    gap: 16px !important;
+    width: max-content !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    padding: 0 16px !important;
+  }
+  .program-card {
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    min-width: 260px !important;
+    max-width: 85vw !important;
   }
   .ec-gallery-grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -3998,8 +3994,9 @@
       </p>
     </div>
 
-    <div class="programs-grid">
-      <div class="program-card reveal reveal-delay-1">
+    <div class="programs-grid-wrapper">
+      <div class="programs-grid">
+        <div class="program-card reveal reveal-delay-1">
         <img class="program-card-img" src="kailash_images/kg-art-class.jpg" alt="Kindergarten" />
         <div class="program-card-body">
           <span class="program-card-tag">Early Education</span>
@@ -4038,6 +4035,7 @@
           <a class="program-card-btn" href="#programs">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -4282,7 +4280,6 @@
      ABOUT US SECTION
 ================================================================ -->
 <section class="about-us" id="about-section">
-  <div class="about-us-bg about-us-bg-1"></div>
   <div class="about-us-bg about-us-bg-2"></div>
   <div class="about-us-dots dot-1"></div>
   <div class="about-us-dots dot-2"></div>
