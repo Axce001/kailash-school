@@ -2141,11 +2141,11 @@
     .ec-gallery-cell {
       overflow: hidden;
       border-radius: 16px;
-      box-shadow: 0 0 0 3px transparent, 0 6px 24px rgba(0,0,0,0.12);
-      background: linear-gradient(45deg, #2563eb, #1d4ed8, #6366f1, #8b5cf6, #2563eb);
-      background-size: 400% 400%;
-      animation: glowBorder 4s ease infinite;
-      background-clip: padding-box;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+      border: 3px solid transparent;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(45deg, #2563eb, #6366f1, #1d4ed8) border-box;
+      animation: glowBorder 2s ease infinite;
     }
     .ec-gallery-cell img {
       width: 100%;
@@ -2154,12 +2154,10 @@
       transition: transform 0.4s ease;
       border-radius: 12px;
       display: block;
-      margin: 3px;
     }
     @keyframes glowBorder {
-      0% { background-position: 0% 50%; box-shadow: 0 0 15px 0px #2563eb; }
-      50% { background-position: 100% 50%; box-shadow: 0 0 20px 3px #8b5cf6; }
-      100% { background-position: 0% 50%; box-shadow: 0 0 15px 0px #2563eb; }
+      0%, 100% { border-color: #2563eb; }
+      50% { border-color: #6366f1; }
     }
     .ec-gallery-cell:hover img {
       transform: scale(1.05);
