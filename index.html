@@ -4049,19 +4049,33 @@
     border-radius: 10px !important;
   }
   .gallery-scroll {
-    flex-direction: column !important;
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    padding: 0 16px !important;
     gap: 16px !important;
+    -webkit-overflow-scrolling: touch !important;
   }
-  .gallery-item {
-    min-width: 100% !important;
-    height: 200px !important;
+  .gallery-card {
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    min-width: 260px !important;
+    max-width: 85vw !important;
   }
   .wt-cards-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    padding: 0 16px !important;
+    -webkit-overflow-scrolling: touch !important;
   }
   .wt-card {
-    padding: 20px !important;
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    min-width: 280px !important;
+    max-width: 85vw !important;
+    padding: 0 !important;
   }
   .about-us-grid {
     grid-template-columns: 1fr !important;
