@@ -1755,6 +1755,37 @@
       margin-top: 2px;
     }
 
+    /* Floating items decoration */
+    .floating-items {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .float-item {
+      position: absolute;
+      font-size: 1.5rem;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+      animation: floatAnim 4s ease-in-out infinite;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .float-item.visible {
+      opacity: 1;
+    }
+    .item-1 { top: -10px; left: -20px; animation-delay: 0s; }
+    .item-2 { top: 20px; right: -15px; animation-delay: 0.5s; }
+    .item-3 { top: 50%; left: -25px; animation-delay: 1s; }
+    .item-4 { bottom: -15px; right: -10px; animation-delay: 1.5s; }
+    .item-5 { top: -5px; right: 30px; animation-delay: 2s; }
+    .item-6 { bottom: 20px; left: -10px; animation-delay: 2.5s; }
+
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-8px) rotate(5deg); }
+      75% { transform: translateY(5px) rotate(-3deg); }
+    }
+
     /* ============================================================
        PROGRAMS SECTION
     ============================================================ */
@@ -3471,6 +3502,14 @@
       </div>
 
       <div class="about-photos reveal reveal-delay-2">
+        <div class="floating-items">
+          <div class="float-item item-1">📓</div>
+          <div class="float-item item-2">✏️</div>
+          <div class="float-item item-3">📚</div>
+          <div class="float-item item-4">🎒</div>
+          <div class="float-item item-5">🖊️</div>
+          <div class="float-item item-6">📐</div>
+        </div>
         <div class="about-photo-frame">
           <img class="active" src="school_images/poojai-ceremony/IMG20260128094115.jpg" alt="Poojai Ceremony" />
           <img src="school_images/kg-graduation/IMG20260313183441.jpg" alt="KG Graduation" />
@@ -4063,6 +4102,13 @@
                 item.querySelector('.icon').classList.add('checked');
               }, 200);
             }, index * 300);
+          });
+          // Also show floating items
+          const floatItems = document.querySelectorAll('.float-item');
+          floatItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('visible');
+            }, index * 200);
           });
           observer.disconnect();
         }
