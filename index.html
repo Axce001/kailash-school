@@ -2168,6 +2168,7 @@
       background: linear-gradient(white, white) padding-box,
                   linear-gradient(45deg, #2563eb, #6366f1, #1d4ed8) border-box;
       animation: glowBorder 2s ease infinite;
+      opacity: 1;
     }
     .ec-gallery-cell img {
       width: 100%;
@@ -2183,6 +2184,15 @@
     }
     .ec-gallery-cell:hover img {
       transform: scale(1.05);
+    }
+    /* Fix for gallery cells - ensure images are visible */
+    .ec-gallery-cell img {
+      opacity: 1 !important;
+    }
+    /* Force gallery to be visible regardless of scroll animation */
+    .ec-content-grid .reveal {
+      opacity: 1 !important;
+      transform: none !important;
     }
     .ec-gallery-cell.cell-1 {
       grid-column: 1 / 2;
