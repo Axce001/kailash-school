@@ -1615,8 +1615,47 @@
     ============================================================ */
     .about {
       padding: 100px 0;
-      background: var(--bg-surface);
+      position: relative;
+      overflow: hidden;
       border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        #e0e7ff 0%,
+        #c7d2fe 25%,
+        #a5b4fc 50%,
+        #818cf8 75%,
+        #6366f1 100%
+      );
+      background-size: 400% 400%;
+      animation: auroraBG 15s ease infinite;
+      opacity: 0.15;
+      z-index: 0;
+    }
+    .about::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80%;
+      height: 100%;
+      background: radial-gradient(ellipse at 100% 0%, rgba(99,102,241,0.1) 0%, transparent 60%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .about > * {
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes auroraBG {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 100% 25%; }
+      50% { background-position: 100% 75%; }
+      75% { background-position: 0% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .about-grid {
       display: grid;
