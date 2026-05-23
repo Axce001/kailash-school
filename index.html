@@ -4181,23 +4181,20 @@
     padding: 0 12px !important;
   }
   .ec-gallery-grid {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    padding: 0 !important;
-    gap: 16px !important;
-    -webkit-overflow-scrolling: touch !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, 160px) !important;
+    gap: 12px !important;
+    overflow: visible !important;
   }
   .ec-gallery-cell {
-    scroll-snap-align: start !important;
-    flex-shrink: 0 !important;
-    width: 280px !important;
-    min-height: 200px !important;
+    width: 100% !important;
+    min-height: 160px !important;
   }
   .ec-gallery-cell img {
     width: 100% !important;
     height: 100% !important;
-    min-height: 200px !important;
+    min-height: 160px !important;
   }
   .about-stat {
     min-width: 100% !important;
@@ -4597,15 +4594,6 @@
           <img src="kailash_images/hero_panel2.jpg" alt="School Activities" />
         </div>
       </div>
-    </div>
-    <!-- Carousel Navigation Arrows -->
-    <div class="carousel-nav" id="ecCarouselNav">
-      <button class="carousel-nav-btn prev" onclick="scrollCarousel('ec', -1)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button class="carousel-nav-btn next" onclick="scrollCarousel('ec', 1)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
     </div>
   </div>
 </section>
@@ -5348,8 +5336,6 @@
       target = document.querySelector('.wt-cards-grid');
     } else if (type === 'programs') {
       target = document.querySelector('.programs-grid');
-    } else if (type === 'ec') {
-      target = document.querySelector('.ec-gallery-grid');
     }
 
     if (target) {
